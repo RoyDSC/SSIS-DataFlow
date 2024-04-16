@@ -1,0 +1,1325 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/9/2024 1:40:23 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CORPLPZ_60_23"
+  DTS:CreatorName="AD\rantequerac"
+  DTS:DTSID="{27068151-521F-4760-918A-D728FF137133}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="16394"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{32F30FD2-43F1-4BF9-84FA-9B9A6E9B271E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CORPLPZ_60_23\ROYSQLSERVER.AdventureWorksDW2016]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{11BD4A08-3BAE-460A-96E9-FAD55EF6154C}"
+      DTS:ObjectName="CORPLPZ_60_23\ROYSQLSERVER.AdventureWorksDW2016">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=CORPLPZ_60_23\ROYSQLSERVER;Initial Catalog=AdventureWorksDW2016;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{11BD4A08-3BAE-460A-96E9-FAD55EF6154C}CORPLPZ_60_23\ROYSQLSERVER.AdventureWorksDW2016;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CORPLPZ_60_23\ROYSQLSERVER.STREAMING]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{92C49F02-85E6-4599-8477-EB6C2B51FFB9}"
+      DTS:ObjectName="CORPLPZ_60_23\ROYSQLSERVER.STREAMING">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=CORPLPZ_60_23\ROYSQLSERVER;Initial Catalog=STREAMING;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{92C49F02-85E6-4599-8477-EB6C2B51FFB9}CORPLPZ_60_23\ROYSQLSERVER.STREAMING;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{983FEF28-6C14-4D45-B884-D54F7D7F7996}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Variable">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DELETE Comand OLE DB"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{F4FF4C53-5933-40EF-A490-AA1AE0B534E2}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DELETE Comand OLE DB"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DELETE Comand OLE DB\Comando de OLE DB"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Comando de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Ejecuta una instrucción SQL para cada fila de un flujo de datos. Por ejemplo, se usa para llamar al procedimiento almacenado de configuración de nuevo empleado para cada fila de la tabla de nuevos empleados. Nota: la ejecución de una instrucción SQL para cada fila de un flujo de datos de gran tamaño puede tardar mucho tiempo."
+              name="Comando de OLE DB"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DELETE FROM Geografia
+WHERE GeografiaID=?
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE Comand OLE DB\Comando de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CORPLPZ_60_23\ROYSQLSERVER.STREAMING]"
+                  connectionManagerRefId="Package.ConnectionManagers[CORPLPZ_60_23\ROYSQLSERVER.STREAMING]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DELETE Comand OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]"
+                  errorOrTruncationOperation="Ejecución de comando"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de comando de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DELETE Comand OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[GeographyKey]"
+                      cachedDataType="i4"
+                      cachedName="GeographyKey"
+                      externalMetadataColumnId="Package\DELETE Comand OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\DELETE Comand OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[GeographyKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE Comand OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Comand OLE DB\Comando de OLE DB.Outputs[Salida de comando de OLE DB]"
+                  exclusionGroup="1"
+                  name="Salida de comando de OLE DB"
+                  synchronousInputId="Package\DELETE Comand OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Comand OLE DB\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de comando de OLE DB"
+                  synchronousInputId="Package\DELETE Comand OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Comand OLE DB\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Comand OLE DB\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Comand OLE DB\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Comand OLE DB\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Comand OLE DB\Origen de OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen de OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+GeographyKey
+FROM [AdventureWorksDW2016].[dbo].[DimGeography]
+WHERE CountryRegionCode='US'</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE Comand OLE DB\Origen de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CORPLPZ_60_23\ROYSQLSERVER.AdventureWorksDW2016]"
+                  connectionManagerRefId="Package.ConnectionManagers[CORPLPZ_60_23\ROYSQLSERVER.AdventureWorksDW2016]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DELETE Comand OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Comand OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[GeographyKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Comand OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[GeographyKey]"
+                      lineageId="Package\DELETE Comand OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[GeographyKey]"
+                      name="GeographyKey"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE Comand OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[GeographyKey]"
+                      dataType="i4"
+                      name="GeographyKey" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DELETE Comand OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Comand OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[GeographyKey]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Comand OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[GeographyKey]"
+                      name="GeographyKey" />
+                    <outputColumn
+                      refId="Package\DELETE Comand OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Comand OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Comand OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Comand OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DELETE Comand OLE DB.Paths[Salida de origen de OLE DB]"
+              endId="Package\DELETE Comand OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]"
+              name="Salida de origen de OLE DB"
+              startId="Package\DELETE Comand OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\INSERT Comando OLE DB"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{85D9974A-B560-4AB1-BA73-6C3D73EE11D3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="INSERT Comando OLE DB"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\INSERT Comando OLE DB\Insertar Geografia"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Comando de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Ejecuta una instrucción SQL para cada fila de un flujo de datos. Por ejemplo, se usa para llamar al procedimiento almacenado de configuración de nuevo empleado para cada fila de la tabla de nuevos empleados. Nota: la ejecución de una instrucción SQL para cada fila de un flujo de datos de gran tamaño puede tardar mucho tiempo."
+              name="Insertar Geografia"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">INSERT INTO Geografia(GeografiaID,Ciudad,CodigoEstado,NombreEstado,CodigoPais,NombrePais,PostalCode)
+VALUES(?,?,?,?,?,?,?)</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\INSERT Comando OLE DB\Insertar Geografia.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CORPLPZ_60_23\ROYSQLSERVER.STREAMING]"
+                  connectionManagerRefId="Package.ConnectionManagers[CORPLPZ_60_23\ROYSQLSERVER.STREAMING]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB]"
+                  errorOrTruncationOperation="Ejecución de comando"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de comando de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].Columns[GeographyKey]"
+                      cachedDataType="i4"
+                      cachedName="GeographyKey"
+                      externalMetadataColumnId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[GeographyKey]" />
+                    <inputColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[City]" />
+                    <inputColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].Columns[StateProvinceCode]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="StateProvinceCode"
+                      externalMetadataColumnId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StateProvinceCode]" />
+                    <inputColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].Columns[StateProvinceName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StateProvinceName"
+                      externalMetadataColumnId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StateProvinceName]" />
+                    <inputColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].Columns[CountryRegionCode]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="CountryRegionCode"
+                      externalMetadataColumnId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CountryRegionCode]" />
+                    <inputColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].Columns[EnglishCountryRegionName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EnglishCountryRegionName"
+                      externalMetadataColumnId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[EnglishCountryRegionName]" />
+                    <inputColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="PostalCode"
+                      externalMetadataColumnId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[PostalCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="30"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="3"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      dataType="wstr"
+                      length="3"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      dataType="wstr"
+                      length="15"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INSERT Comando OLE DB\Insertar Geografia.Outputs[Salida de comando de OLE DB]"
+                  exclusionGroup="1"
+                  name="Salida de comando de OLE DB"
+                  synchronousInputId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\INSERT Comando OLE DB\Insertar Geografia.Outputs[Salida de error de comando de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de comando de OLE DB"
+                  synchronousInputId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INSERT Comando OLE DB\Insertar Geografia.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Insertar Geografia.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INSERT Comando OLE DB\Insertar Geografia.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INSERT Comando OLE DB\Origen de OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen de OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+GeographyKey,
+City,
+StateProvinceCode,
+StateProvinceName,
+CountryRegionCode,
+EnglishCountryRegionName,
+PostalCode
+FROM [AdventureWorksDW2016].[dbo].[DimGeography]</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CORPLPZ_60_23\ROYSQLSERVER.AdventureWorksDW2016]"
+                  connectionManagerRefId="Package.ConnectionManagers[CORPLPZ_60_23\ROYSQLSERVER.AdventureWorksDW2016]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[GeographyKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[GeographyKey]"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[GeographyKey]"
+                      name="GeographyKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[City]"
+                      length="30"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StateProvinceCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[StateProvinceCode]"
+                      length="3"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StateProvinceCode]"
+                      name="StateProvinceCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StateProvinceName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[StateProvinceName]"
+                      length="50"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StateProvinceName]"
+                      name="StateProvinceName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CountryRegionCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[CountryRegionCode]"
+                      length="3"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CountryRegionCode]"
+                      name="CountryRegionCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[EnglishCountryRegionName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[EnglishCountryRegionName]"
+                      length="50"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[EnglishCountryRegionName]"
+                      name="EnglishCountryRegionName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[PostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[PostalCode]"
+                      length="15"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[GeographyKey]"
+                      dataType="i4"
+                      name="GeographyKey" />
+                    <externalMetadataColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="30"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[StateProvinceCode]"
+                      dataType="wstr"
+                      length="3"
+                      name="StateProvinceCode" />
+                    <externalMetadataColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[StateProvinceName]"
+                      dataType="wstr"
+                      length="50"
+                      name="StateProvinceName" />
+                    <externalMetadataColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[CountryRegionCode]"
+                      dataType="wstr"
+                      length="3"
+                      name="CountryRegionCode" />
+                    <externalMetadataColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[EnglishCountryRegionName]"
+                      dataType="wstr"
+                      length="50"
+                      name="EnglishCountryRegionName" />
+                    <externalMetadataColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="15"
+                      name="PostalCode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[GeographyKey]"
+                      dataType="i4"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[GeographyKey]"
+                      name="GeographyKey" />
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[City]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[StateProvinceCode]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[StateProvinceCode]"
+                      name="StateProvinceCode" />
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[StateProvinceName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[StateProvinceName]"
+                      name="StateProvinceName" />
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[CountryRegionCode]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[CountryRegionCode]"
+                      name="CountryRegionCode" />
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[EnglishCountryRegionName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[EnglishCountryRegionName]"
+                      name="EnglishCountryRegionName" />
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\INSERT Comando OLE DB.Paths[Salida de origen de OLE DB]"
+              endId="Package\INSERT Comando OLE DB\Insertar Geografia.Inputs[Entrada de comando de OLE DB]"
+              name="Salida de origen de OLE DB"
+              startId="Package\INSERT Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tarea Ejecutar SQL"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{0087F99D-C299-4D54-B572-E6AFB77D2FE2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarea Ejecutar SQL"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{92C49F02-85E6-4599-8477-EB6C2B51FFB9}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Geografia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\UPDATE Comando OLE DB"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{11A4AAB6-D1E0-4334-A249-0B49687D3451}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="UPDATE Comando OLE DB"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\UPDATE Comando OLE DB\Comando de OLE DB"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Comando de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Ejecuta una instrucción SQL para cada fila de un flujo de datos. Por ejemplo, se usa para llamar al procedimiento almacenado de configuración de nuevo empleado para cada fila de la tabla de nuevos empleados. Nota: la ejecución de una instrucción SQL para cada fila de un flujo de datos de gran tamaño puede tardar mucho tiempo."
+              name="Comando de OLE DB"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE Geografia
+SET NombrePais=?
+WHERE GeografiaID=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CORPLPZ_60_23\ROYSQLSERVER.STREAMING]"
+                  connectionManagerRefId="Package.ConnectionManagers[CORPLPZ_60_23\ROYSQLSERVER.STREAMING]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]"
+                  errorOrTruncationOperation="Ejecución de comando"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de comando de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[GeographyKey]"
+                      cachedDataType="i4"
+                      cachedName="GeographyKey"
+                      externalMetadataColumnId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[GeographyKey]" />
+                    <inputColumn
+                      refId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[SpanishCountryRegionName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="SpanishCountryRegionName"
+                      externalMetadataColumnId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[SpanishCountryRegionName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Outputs[Salida de comando de OLE DB]"
+                  exclusionGroup="1"
+                  name="Salida de comando de OLE DB"
+                  synchronousInputId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de comando de OLE DB"
+                  synchronousInputId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UPDATE Comando OLE DB\Origen de OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen de OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+GeographyKey,
+SpanishCountryRegionName
+FROM [AdventureWorksDW2016].[dbo].[DimGeography]</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CORPLPZ_60_23\ROYSQLSERVER.AdventureWorksDW2016]"
+                  connectionManagerRefId="Package.ConnectionManagers[CORPLPZ_60_23\ROYSQLSERVER.AdventureWorksDW2016]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[GeographyKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[GeographyKey]"
+                      lineageId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[GeographyKey]"
+                      name="GeographyKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[SpanishCountryRegionName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[SpanishCountryRegionName]"
+                      length="50"
+                      lineageId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[SpanishCountryRegionName]"
+                      name="SpanishCountryRegionName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[GeographyKey]"
+                      dataType="i4"
+                      name="GeographyKey" />
+                    <externalMetadataColumn
+                      refId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[SpanishCountryRegionName]"
+                      dataType="wstr"
+                      length="50"
+                      name="SpanishCountryRegionName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[GeographyKey]"
+                      dataType="i4"
+                      lineageId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[GeographyKey]"
+                      name="GeographyKey" />
+                    <outputColumn
+                      refId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[SpanishCountryRegionName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[SpanishCountryRegionName]"
+                      name="SpanishCountryRegionName" />
+                    <outputColumn
+                      refId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\UPDATE Comando OLE DB.Paths[Salida de origen de OLE DB]"
+              endId="Package\UPDATE Comando OLE DB\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]"
+              name="Salida de origen de OLE DB"
+              startId="Package\UPDATE Comando OLE DB\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{72452F51-493C-4AAF-A89E-5DA8D180E31E}"
+      DTS:From="Package\INSERT Comando OLE DB"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\UPDATE Comando OLE DB" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C5997309-5839-4075-AE79-895A0AC5DDC8}"
+      DTS:From="Package\Tarea Ejecutar SQL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\INSERT Comando OLE DB" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{F59585C1-BD4C-4BC8-8891-0B4120BD0ECE}"
+      DTS:From="Package\UPDATE Comando OLE DB"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 2"
+      DTS:To="Package\DELETE Comand OLE DB" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="202,42"
+          Id="Package\INSERT Comando OLE DB"
+          TopLeft="169,111" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\UPDATE Comando OLE DB"
+          TopLeft="175,210" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="273.5,153">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57"
+              Start="0,0"
+              End="0,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Tarea Ejecutar SQL"
+          TopLeft="186,27" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="270.5,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="197,42"
+          Id="Package\DELETE Comand OLE DB"
+          TopLeft="189,305" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="277,252">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.5,53"
+              Start="0,0"
+              End="10.5,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.5"
+                    Point2="0,26.5"
+                    Point3="4,26.5" />
+                  <mssgle:LineSegment
+                    End="6.5,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.5,26.5"
+                    Point2="10.5,26.5"
+                    Point3="10.5,30.5" />
+                  <mssgle:LineSegment
+                    End="10.5,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\INSERT Comando OLE DB">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="130,42"
+          Id="Package\INSERT Comando OLE DB\Origen de OLE DB"
+          TopLeft="76,31" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\INSERT Comando OLE DB\Insertar Geografia"
+          TopLeft="78,107" />
+        <EdgeLayout
+          Id="Package\INSERT Comando OLE DB.Paths[Salida de origen de OLE DB]"
+          TopLeft="142,73">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\INSERT Comando OLE DB\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\UPDATE Comando OLE DB">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\UPDATE Comando OLE DB\Origen de OLE DB"
+          TopLeft="183,50" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\UPDATE Comando OLE DB\Comando de OLE DB"
+          TopLeft="174,133" />
+        <EdgeLayout
+          Id="Package\UPDATE Comando OLE DB.Paths[Salida de origen de OLE DB]"
+          TopLeft="263.75,92">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\UPDATE Comando OLE DB\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DELETE Comand OLE DB">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\DELETE Comand OLE DB\Origen de OLE DB"
+          TopLeft="88,14" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\DELETE Comand OLE DB\Comando de OLE DB"
+          TopLeft="87,106" />
+        <EdgeLayout
+          Id="Package\DELETE Comand OLE DB.Paths[Salida de origen de OLE DB]"
+          TopLeft="172.75,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DELETE Comand OLE DB\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
